@@ -1,0 +1,59 @@
+.Map {
+  height: 95vh;
+  width: 100%;
+}
+
+.InfoWindow {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 13px;
+  min-width: 300px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.InfoWindow a:hover {
+  text-decoration: underline;
+}
+
+.InfoWindow h1 {
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  margin:0;
+}
+
+.InfoWindow .section-info {
+  font-size: 13px;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  position: relative;
+}
+
+.InfoWindow address.session-info-line {
+  font-style: normal
+}
+
+.InfoWindow .session-info-line {
+  padding: 4px 24px 4px 0;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.InfoWindow .section-info a {
+  color: #3a84df;
+}
+
+.InfoWindow .session-info-line:hover {
+  background-color: rgba(0, 0, 0, .03);
+  cursor: pointer;
+}
+
+.InfoWindow .session-info-red {
+  color: #DB4437;
+}

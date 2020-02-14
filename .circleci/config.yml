@@ -1,0 +1,52 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: node:10
+    steps:
+      - checkout
+      - run:
+          name: Check Node.js version
+          command: node -v
+      - restore_cache:
+          name: Restore dependencies from cache
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Update packages
+          command: apt-get -q update
+      - run:
+          name: Install firebase
+          command: yarn global add firebase-tools
+      - run:
+          name: Check npm version
+          command: npm --version
+      - run:
+          name: Check yarn version
+          command: yarn --version
+      - run:
+          name: Install dependencies if needed
+          command: |
+            if [ ! -d node_modules ]; then
+              yarn install --frozen-lockfile
+            fi
+      - save_cache:
+          name: Cache dependencies
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Test
+          command: yarn run test
+      - run:
+          name: Build
+          command: yarn run build
+      - run:
+          name: Deploy
+          command: firebase deploy --token "$FIREBASE_TOKEN" --project "$FIREBASE_PROJECT"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
+            - package.json
+            - yarn.lock
+            - app.yaml
