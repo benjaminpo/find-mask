@@ -15,9 +15,9 @@ const Map = () => {
     };
   };
 
-  const setTimeTo12 = (time24: any) => {
+  const setTimeTo12 = (time24: string) => {
     const H: number = + time24.substr(0, 2);
-    const h: any = (H % 12) || 12;
+    const h: number = (H % 12) || 12;
     const ampm: string = H < 12 ? 'am' : 'pm';
     return h + time24.substr(2, 3) + ampm;
   };
