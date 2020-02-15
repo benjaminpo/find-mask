@@ -120,7 +120,7 @@ const Map = () => {
           <div class="session-info-line">
             <i class="home icon"></i>
             <a href="${place.website}" target="_blank">
-              ${place.website.replace('https://www.', '').replace('http://www.', '').replace('/', '')}
+              ${place.website.replace('https://', '').replace('http://', '').replace('www.', '').replace('/', '')}
             </a>
           </div>
         </div>
