@@ -91,16 +91,29 @@ const Map = () => {
             Directions
           </a>
         </p>
+    `;
+
+    if (place.address_en_us) {
+      contentString += `
         <address class="session-info-line">
           ${place.address_en_us}
         </address>
-    `;
+      `;
+    }
+
+    if (place.address_zh_hk) {
+      contentString += `
+        <address class="session-info-line">
+          ${place.address_zh_hk}
+        </address>
+      `;
+    }
 
     if (place.opening_hours_open && place.opening_hours_close) {
       contentString += `
         <div class="session-info">
           <div class="session-info-line">
-            ${setTimeTo12(place.opening_hours_open)} – ${setTimeTo12(place.opening_hours_close)}
+            Open Hours: ${setTimeTo12(place.opening_hours_open)} – ${setTimeTo12(place.opening_hours_close)}
           </div>
         </div>
       `;
